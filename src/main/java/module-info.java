@@ -3,6 +3,10 @@ module com.example.chatterboxserver {
     requires javafx.fxml;
 
 
-    opens com.example.chatterboxserver to javafx.fxml;
+
+    exports com.example.chatterboxserver.server;
+    opens com.example.chatterboxserver.server to javafx.fxml;
     exports com.example.chatterboxserver;
+    opens com.example.chatterboxserver to javafx.fxml;
+
 }
