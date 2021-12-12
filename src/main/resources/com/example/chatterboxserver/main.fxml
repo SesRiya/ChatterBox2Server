@@ -18,11 +18,16 @@
         </Label>
       <TextField fx:id="tf_port" layoutX="224.0" layoutY="69.0" prefHeight="25.0" prefWidth="77.0" />
       <Label layoutX="165.0" layoutY="73.0" prefHeight="17.0" prefWidth="43.0" text="PORT:" />
-      <Label fx:id="serverLabel" layoutX="38.0" layoutY="118.0" text="Label">
+      <Label fx:id="serverLabel" layoutX="170.0" layoutY="117.0" text="Label">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
       <Button id="stopBtn" layoutX="337.0" layoutY="69.0" mnemonicParsing="false" onAction="#stopButtonClicked" text="Stop Server" />
+      <Label layoutX="38.0" layoutY="119.0" prefHeight="17.0" prefWidth="88.0" text="IP Address:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
     </children>
 </Pane>

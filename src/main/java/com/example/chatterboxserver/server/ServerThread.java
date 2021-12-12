@@ -170,12 +170,14 @@ public class ServerThread extends Thread implements Runnable {
         }
     }
 
-    private String getUserPasswordFromDB(String userName) throws SQLException {
+    private String getUserPasswordFromDB(String userName) throws SQLException, InvalidAlgorithmParameterException, NoSuchPaddingException, UnsupportedEncodingException, IllegalBlockSizeException, InvalidKeySpecException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         ResultSet resultSet = DbUtils.executeQuery(connection, "SELECT * FROM CLIENTINFO WHERE USERNAME = '" + userName +  "'" );
         while(resultSet.next()){
             String password = resultSet.getString("Password");
+            String decryptedPassword = decryptMessage(password);
             System.out.println("Password from DB: " + password);
-            return password;
+            System.out.println("Decrypted Password: "  + decryptedPassword);
+            return decryptedPassword;
         }
 
         return null;
@@ -224,25 +226,6 @@ public class ServerThread extends Thread implements Runnable {
         return decryptedMessage;
     }
 
-    public void closeEverything(Socket socket, BufferedReader bufferedReader, BufferedWriter bufferedWriter) {
-
-        try {
-            if (bufferedReader != null) {
-                bufferedReader.close();
-            }
-
-            if (bufferedWriter != null) {
-                bufferedWriter.close();
-            }
-
-            if (socket != null) {
-                socket.close();
-            }
-        } catch (IOException var5) {
-            var5.printStackTrace();
-        }
-
-    }
 }
 
 
